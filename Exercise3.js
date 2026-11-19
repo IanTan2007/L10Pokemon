@@ -44,7 +44,7 @@ const datasource = [
 const renderItem = ({item}) => {
     return (
         <TouchableOpacity
-            style={styles.foodRow}
+            style={styles.pokemonRow}
             onPress={() => Alert.alert('Pokémon Selected', item.name)}
         >
             <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.name}</Text>
@@ -53,7 +53,7 @@ const renderItem = ({item}) => {
                 source={{
                     uri: `https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_${item.number}-2x.png`
                 }}
-                style={styles.foodImage}
+                style={styles.pokemonImage}
             />
         </TouchableOpacity>
     );

@@ -4,41 +4,39 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 const datasource = [
   {
-    title: 'Japanese Cuisine',
-    bgColor: '#FFE0B2',
-    icon: 'restaurant',
+    title: 'Water',
+    bgColor: '#B3E5FC',
+    icon: 'water-drop',
     data: [
-      {
-        name: 'Tonkotsu Ramen',
-        description: 'Rich pork broth with noodles',
-        price: 14.90,
-        image: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2FPhoto%2FRecipes%2F2024-03-tonkotsu-ramen%2Ftonkotsu-ramen-195',
-      },
-      {
-        name: 'Takoyaki',
-        description: 'Octopus balls with savoury sauce',
-        price: 6.70,
-        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqJ7dw90r6hBFpZxDc90ggaYs6ZY-ylPvInfk_w3VevXRiiEBQsFl1DZVbwnFRCYVIHStHcKFQH7X9cUHSDVSh_iElicob8AvYUoRZKg&s=10',
-      },
+      { name: 'Squirtle', number: 7 },
+      { name: 'Psyduck', number: 54 },
     ],
   },
   {
-    title: 'Italian Cuisine',
-    bgColor: '#C8E6C9',
-    icon: 'local-pizza',
+    title: 'Psychic',
+    bgColor: '#E1BEE7',
+    icon: 'psychology',
     data: [
-      {
-        name: 'Spaghetti Bolognese',
-        description: 'Spaghetti with rich beef and tomato sauce',
-        price: 16.90,
-        image: 'https://img.chefkoch-cdn.de/rezepte/393031127655461/bilder/1618353/crop-640x427/spaghetti-bolognese.jpg',
-      },
-      {
-        name: 'Quattro Formaggi Pizza',
-        description: 'Pizza topped with four delicious cheeses',
-        price: 18.90,
-        image: 'https://www.gustini.co.uk/blog/wp-content/uploads/2025/01/Pizza-Formaggio_RezeptVorschau.jpg',
-      },
+      { name: 'Abra', number: 63 },
+      { name: 'Mewtwo', number: 150 },
+    ],
+  },
+  {
+    title: 'Fire',
+    bgColor: '#FFCCBC',
+    icon: 'local-fire-department',
+    data: [
+      { name: 'Charmander', number: 4 },
+      { name: 'Growlithe', number: 58 },
+    ],
+  },
+  {
+    title: 'Electric',
+    bgColor: '#FFF59D',
+    icon: 'bolt',
+    data: [
+      { name: 'Pikachu', number: 25 },
+      { name: 'Voltorb', number: 100 },
     ],
   },
 ];
@@ -46,26 +44,16 @@ const datasource = [
 const renderItem = ({item}) => {
   return (
       <TouchableOpacity
-          style={styles.foodRow}
-          onPress={() => Alert.alert('Added to cart!', item.name)}
+          style={styles.pokemonRow}
+          onPress={() => Alert.alert('Pokémon Selected', item.name)}
       >
-        <View style={styles.foodDetails}>
-          <Text style={styles.foodName}>
-            {item.name}
-          </Text>
-
-          <Text style={styles.foodDescription}>
-            {item.description}
-          </Text>
-
-          <Text style={styles.foodPrice}>
-            S${item.price.toFixed(2)}
-          </Text>
-        </View>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.name}</Text>
 
         <Image
-            source={{uri: item.image}}
-            style={styles.foodImage}
+            source={{
+              uri: `https://dz3we2x72f7ol.cloudfront.net/expansions/151/en-us/SV3pt5_EN_${item.number}-2x.png`
+            }}
+            style={styles.pokemonImage}
         />
       </TouchableOpacity>
   );
@@ -78,15 +66,15 @@ export default function App() {
 
         <View style={styles.titleContainer}>
           <MaterialIcons
-              name="restaurant-menu"
+              name="catching-pokemon"
               size={32}
               color="#E53935"
           />
-          <Text style={styles.appTitle}>Ian's Menu</Text>
+          <Text style={styles.appTitle}>Ian's Pokédex</Text>
         </View>
 
         <Button
-            title="Add Food"
+            title="Add Pokémon"
             onPress={() => Alert.alert('Coming Soon!')}
         />
         <SectionList
@@ -127,7 +115,7 @@ const styles = StyleSheet.create({
 
   },
 
-  foodRow: {
+  pokemonRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -137,36 +125,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
 
-  foodImage: {
-    width: 115,
-    height: 105,
-    resizeMode: 'cover',
-    borderRadius: 10,
-    flexShrink: 0,
-  },
-
-  foodDetails: {
-    width: '55%',
-    flexShrink: 1,
-    marginRight: 8,
-  },
-
-  foodName: {
-    fontSize: 17,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-
-  foodDescription: {
-    fontSize: 13,
-    color: '#666',
-    marginBottom: 10,
-  },
-
-  foodPrice: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#E53935',
+  pokemonImage: {
+    width: 120,
+    height: 165,
+    resizeMode: 'contain',
   },
 
   appTitle: {
